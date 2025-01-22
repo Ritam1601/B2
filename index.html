@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Poem</title>
+  <style>
+    body {
+      font-family: Times New Roman, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: ##ffff00dc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #page1, #page2 {
+      display: none;
+      text-align: center;
+    }
+    #page1.active, #page2.active {
+      display: block;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin: 10px 0;
+    }
+    button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e55a4e;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      margin-top: 20px;
+    }
+    .poem {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Page 1 -->
+  <div id="page1" class="active">
+    <h1>Welcome</h1>
+    <p>Enter the secret passcode to unlock the surprise.</p>
+    <input type="password" id="passcode" placeholder="Enter passcode">
+    <br>
+    <button onclick="checkPasscode()">Submit</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="page2">
+    <h1>Her Beauty</h1>
+    <img src="shree.jpeg" alt="Her Image">
+    <div class="poem">
+      <p>Her eyes, a haven of stars so bright,<br>
+      Hold the mysteries of the night.<br>
+      With lips adorned in crimson hue,<br>
+      A timeless grace, forever new.</p>
+
+      <p>Her hair cascades in a silken stream,<br>
+      Like whispers spun from a gentle dream.<br>
+      In emerald hues her presence beams,<br>
+      A vision woven from heaven’s seams.</p>
+
+      <p>A bindi rests, a mark of pride,<br>
+      Framing beauty that can’t be denied.<br>
+      A gaze so pure, a charm so rare,<br>
+      She’s elegance beyond compare.</p>
+    </div>
+    <audio id="background-music" src="21.mp3" autoplay loop></audio>
+  </div>
+
+  <script>
+    const correctPasscode = "1234"; // Set your passcode here
+
+    function checkPasscode() {
+      const enteredPasscode = document.getElementById("passcode").value;
+      if (enteredPasscode === correctPasscode) {
+        document.getElementById("page1").classList.remove("active");
+        document.getElementById("page2").classList.add("active");
+        document.getElementById("background-music").play();
+      } else {
+        alert("Incorrect passcode. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>
